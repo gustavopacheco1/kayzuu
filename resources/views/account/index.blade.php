@@ -43,25 +43,24 @@
         </div>
         <hr>
         <h2>Change password</h2>
-        <form action="" method="POST">
+        <form action="{{ url('change-password/handle') }}" method="POST">
             @csrf
             <div class="row mb-3">
-                <label for="current_password" class="col-sm-3 col-form-label">Current password</label>
+                <label for="password" class="col-sm-3 col-form-label">Current password</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control rounded-0" name="current_password" id="current_password">
+                    <input type="password" class="form-control rounded-0" name="password" id="password" required>
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="new_password" class="col-sm-3 col-form-label">New password</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control rounded-0" name="new_password" id="new_password">
+                    <input type="password" class="form-control rounded-0" name="new_password" id="new_password" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="repeat_new_password" class="col-sm-3 col-form-label">Repeat new password</label>
+                <label for="new_password_confirmation" class="col-sm-3 col-form-label">Repeat new password</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control rounded-0" name="repeat_new_password"
-                        id="repeat_new_password">
+                    <input type="password" class="form-control rounded-0" name="new_password_confirmation" id="new_password_confirmation" required>
                 </div>
             </div>
             <button class="btn btn-dark rounded-0 float-end">CHANGE PASSWORD</button>

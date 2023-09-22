@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommunityController;
@@ -25,6 +26,7 @@ Route::post('/login/handle', [LoginController::class, 'handle'])->middleware('gu
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register/handle', [RegisterController::class, 'handle'])->middleware('guest');
+Route::post('/change-password/handle', [ChangePasswordController::class, 'handle'])->middleware('auth');
 Route::get('/account', [AccountController::class, 'index'])->middleware('auth');
 Route::get('/account/characters', [AccountController::class, 'characters'])->middleware('auth');
 Route::get('/account/create-character', [AccountController::class, 'createCharacter'])->middleware('auth');
@@ -33,4 +35,3 @@ Route::get('/search-player', [CommunityController::class, 'searchPlayer']);
 Route::get('/highscore', [CommunityController::class, 'highscore']);
 Route::get('/player/search', [PlayerController::class, 'search']);
 Route::get('/player/{id}', [PlayerController::class, 'player']);
-
