@@ -39,6 +39,7 @@ Route::name('auth.')->group(function () {
 
 Route::name('community.')->group(function () {
     Route::get('highscore', [CommunityController::class, 'highscore'])->name('highscore');
+    Route::get('players/online', [CommunityController::class, 'online'])->name('online');
 });
 
 Route::prefix('account')->name('account.')->middleware('auth')->group(function () {

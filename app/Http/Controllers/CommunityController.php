@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
-use Illuminate\Http\Request;
 
 class CommunityController extends Controller
 {
@@ -12,5 +11,15 @@ class CommunityController extends Controller
         $players = Player::orderByDesc('level')->take(50)->get();
 
         return view('community.highscore', ['players' => $players]);
+    }
+
+    public function online()
+    {
+        $players = Player::join('players_online', 'players.id', '=', 'players_online.player_id')
+            ->select('id', 'name', 'vocation', 'level')
+            ->orderByDesc('level')
+            ->get();
+
+        return view('community.online', ['players' => $players]);
     }
 }
