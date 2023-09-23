@@ -43,7 +43,7 @@
         </div>
         <hr>
         <h2>Change password</h2>
-        <form action="{{ route('auth.password.change') }}" method="POST">
+        <form action="{{ route('auth.password.change.post') }}" method="POST">
             @csrf
             <div class="row mb-3">
                 <label for="password" class="col-sm-3 col-form-label">Current password</label>

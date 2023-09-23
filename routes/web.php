@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -37,7 +38,7 @@ Route::name('auth.')->group(function () {
 });
 
 Route::name('community.')->group(function () {
-    Route::get('/highscore', [CommunityController::class, 'highscore'])->name('highscore');
+    Route::get('highscore', [CommunityController::class, 'highscore'])->name('highscore');
 });
 
 Route::prefix('account')->name('account.')->middleware('auth')->group(function () {
@@ -46,11 +47,11 @@ Route::prefix('account')->name('account.')->middleware('auth')->group(function (
 });
 
 Route::prefix('player')->name('player.')->group(function () {
-    Route::get('{id}', [PlayerController::class, 'index'])->name('index');
     Route::get('search', [PlayerController::class, 'search'])->name('search');
     Route::get('find', [PlayerController::class, 'find'])->name('find');
     Route::middleware('auth')->group(function () {
-        Route::post('create', [PlayerController::class, 'create'])->name('create');
+        Route::get('create', [PlayerController::class, 'create'])->name('create');
         Route::post('store', [PlayerController::class, 'store'])->name('store');
     });
+    Route::get('{id}', [PlayerController::class, 'show'])->name('show');
 });

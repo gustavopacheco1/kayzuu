@@ -20,11 +20,11 @@ class PlayerController extends Controller
         ]);
     }
 
-    public function index(int $id)
+    public function show(int $id)
     {
         $player = Player::where('id', $id)->first();
 
-        return view('player.index', $player);
+        return view('player.show', ['player' => $player]);
     }
 
     public function create()

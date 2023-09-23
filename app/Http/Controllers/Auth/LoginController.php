@@ -25,7 +25,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, (bool) $request->remember)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('account/');
+            return redirect()->intended(route('account.general'));
         }
 
         return back()->withErrors([
