@@ -7,6 +7,7 @@
     <div class="card mx-auto mt-5 p-4 col-8">
         <h1>Login</h1>
         <hr>
+        @include('layouts.errors')
         <form action="{{ route('auth.login.post') }}" method="POST">
             @csrf
             <div class="row mb-3">

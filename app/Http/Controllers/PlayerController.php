@@ -15,7 +15,7 @@ class PlayerController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:32'],
+            'name' => ['required', 'unique:players', 'string', 'max:32'],
             'vocation' => ['required', 'int', 'max:255'],
         ]);
     }

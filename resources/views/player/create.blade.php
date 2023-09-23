@@ -20,6 +20,7 @@
         </ul>
         <hr>
         <h2 class="mb-3 mx-auto">Create character</h2>
+        @include('layouts.errors')
         <form action="{{ route('player.store') }}" method="POST">
             @csrf
             <div class="row mb-3">

@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('layouts.errors')
 <form action="{{ route('auth.register.post') }}" method="POST">
     @csrf
     <div>
