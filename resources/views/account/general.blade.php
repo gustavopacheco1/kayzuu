@@ -12,7 +12,7 @@
                 <a class="nav-link active" aria-current="page" href="#">General</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('account/characters') }}">Characters</a>
+                <a class="nav-link" href="{{ route('account.characters') }}">Characters</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('account/transaction-history') }}">Transaction History</a>
@@ -43,7 +43,7 @@
         </div>
         <hr>
         <h2>Change password</h2>
-        <form action="{{ url('change-password/handle') }}" method="POST">
+        <form action="{{ route('auth.password.change') }}" method="POST">
             @csrf
             <div class="row mb-3">
                 <label for="password" class="col-sm-3 col-form-label">Current password</label>

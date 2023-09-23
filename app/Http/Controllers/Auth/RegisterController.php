@@ -30,12 +30,12 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function index()
+    public function showRegisterForm()
     {
         return view('auth.register');
     }
 
-    public function handle(Request $request)
+    public function register(Request $request)
     {
         $this->validator($request->all())->validate();
         $this->create($request->all());

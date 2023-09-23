@@ -9,7 +9,7 @@
         <hr>
         <ul class="nav nav-underline">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('account') }}">General</a>
+                <a class="nav-link" href="{{ route('account.general') }}">General</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Characters</a>
@@ -37,7 +37,7 @@
                 </div>
             @endforeach
             <div class="col-sm-4 mb-3">
-                <a href="{{ url('account/create-character') }}"
+                <a href="{{ route('player.create') }}"
                     class="card text-decoration-none text-primary border-2 border-primary">
                     <div class="card-body text-center">
                         <h1 class="card-title">+</h1>

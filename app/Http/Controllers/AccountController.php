@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
-    public function index()
+    public function general()
     {
         $account = Account::where('id', Auth::id())->first();
         $account->created_at = $account->creation->format('d/m/Y');
-        return view('account.index', $account);
+        return view('account.general', $account);
     }
 
     public function characters()
@@ -20,10 +20,5 @@ class AccountController extends Controller
         $characters = Player::where('account_id', Auth::id())->get();
 
         return view('account.characters', ['characters' => $characters]);
-    }
-
-    public function createCharacter()
-    {
-        return view('account.create-character');
     }
 }

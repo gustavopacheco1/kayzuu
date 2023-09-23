@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form action="register/handle" method="POST">
+<form action="{{ route('auth.register.post') }}" method="POST">
     @csrf
     <div>
         <label for="name">Account name</label>

@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">Kayzuu</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Kayzuu</a>
             <ul class="nav nav-underline">
                 <li class="nav-item">
                     <a href="{{ url('download') }}" class="nav-link">DOWNLOAD</a>
@@ -28,14 +28,14 @@
                             COMMUNITY
                         </a>
                         <ul class="dropdown-menu rounded-0">
-                            <li><a class="dropdown-item" href="{{ url('search-player') }}">Search player</a></li>
+                            <li><a class="dropdown-item" href="{{ route('player.search') }}">Search player</a></li>
                             <li><a class="dropdown-item" href="{{ url('guilds') }}">Guilds</a></li>
                             <li><a class="dropdown-item" href="{{ url('players-online') }}">Players online</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('highscore') }}" class="nav-link">HIGHSCORE</a>
+                    <a href="{{ route('community.highscore') }}" class="nav-link">HIGHSCORE</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('store') }}" class="nav-link">STORE</a>
@@ -45,10 +45,10 @@
 
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login') }}">LOGIN</a>
+                        <a class="nav-link" href="{{ route('auth.login') }}">LOGIN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('register') }}">REGISTER</a>
+                        <a class="nav-link" href="{{ route('auth.register') }}">REGISTER</a>
                     </li>
                 @endguest
                 @auth
@@ -59,14 +59,14 @@
                                 ACCOUNT
                             </a>
                             <ul class="dropdown-menu rounded-0">
-                                <li><a class="dropdown-item" href="{{ url('account') }}">General</a></li>
-                                <li><a class="dropdown-item" href="{{ url('account/characters') }}">Characters</a></li>
+                                <li><a class="dropdown-item" href="{{ route('account.general') }}">General</a></li>
+                                <li><a class="dropdown-item" href="{{ route('account.characters') }}">Characters</a></li>
                                 <li><a class="dropdown-item" href="{{ url('account/transaction-history') }}">Transaction
                                         History</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
+                                <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a></li>
                             </ul>
                         </div>
                     </li>
@@ -81,7 +81,7 @@
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="{{ url('/') }}" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link px-2 text-muted">Home</a></li>
                 <li class="nav-item"><a href="{{ url('/rules') }}" class="nav-link px-2 text-muted">Rules</a></li>
             </ul>
             <p class="text-center text-muted">© 2022 Company, Inc</p>

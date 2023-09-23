@@ -9,10 +9,10 @@
         <hr>
         <ul class="nav nav-underline">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('account') }}">General</a>
+                <a class="nav-link" href="{{ route('account.general') }}">General</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ url('account/characters') }}">Characters</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('account.characters') }}">Characters</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('account/transaction-history') }}">Transaction History</a>
@@ -20,7 +20,7 @@
         </ul>
         <hr>
         <h2 class="mb-3 mx-auto">Create character</h2>
-        <form action="{{ url('player/create') }}" method="POST">
+        <form action="{{ route('player.store') }}" method="POST">
             @csrf
             <div class="row mb-3">
                 <div class="col-sm-6 mx-auto">

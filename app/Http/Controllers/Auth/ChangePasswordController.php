@@ -22,7 +22,7 @@ class ChangePasswordController extends Controller
         event(new PasswordReset($account));
     }
 
-    public function handle(Request $request): RedirectResponse
+    public function change(Request $request): RedirectResponse
     {
         $request->validate([
             'password' => ['required', 'current_password'],

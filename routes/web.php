@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -20,18 +19,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login/handle', [LoginController::class, 'handle'])->middleware('guest');
-Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register/handle', [RegisterController::class, 'handle'])->middleware('guest');
-Route::post('/change-password/handle', [ChangePasswordController::class, 'handle'])->middleware('auth');
-Route::get('/account', [AccountController::class, 'index'])->middleware('auth');
-Route::get('/account/characters', [AccountController::class, 'characters'])->middleware('auth');
-Route::get('/account/create-character', [AccountController::class, 'createCharacter'])->middleware('auth');
-Route::post('/player/create', [PlayerController::class, 'create'])->middleware('auth');
-Route::get('/search-player', [CommunityController::class, 'searchPlayer']);
-Route::get('/highscore', [CommunityController::class, 'highscore']);
-Route::get('/player/search', [PlayerController::class, 'search']);
-Route::get('/player/{id}', [PlayerController::class, 'player']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::name('auth.')->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+        Route::post('login', [LoginController::class, 'login'])->name('login.post');
+
+        Route::get('register', [RegisterController::class, 'showRegisterForm'])->name('register');
+        Route::post('register', [RegisterController::class, 'register'])->name('register.post');
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+        Route::post('password/change', [ChangePasswordController::class, 'change'])->name('password.change.post');
+    });
+});
+
+Route::name('community.')->group(function () {
+    Route::get('/highscore', [CommunityController::class, 'highscore'])->name('highscore');
+});
+
+Route::prefix('account')->name('account.')->middleware('auth')->group(function () {
+    Route::get('general', [AccountController::class, 'general'])->name('general');
+    Route::get('characters', [AccountController::class, 'characters'])->name('characters');
+});
+
+Route::prefix('player')->name('player.')->group(function () {
+    Route::get('{id}', [PlayerController::class, 'index'])->name('index');
+    Route::get('search', [PlayerController::class, 'search'])->name('search');
+    Route::get('find', [PlayerController::class, 'find'])->name('find');
+    Route::middleware('auth')->group(function () {
+        Route::post('create', [PlayerController::class, 'create'])->name('create');
+        Route::post('store', [PlayerController::class, 'store'])->name('store');
+    });
+});

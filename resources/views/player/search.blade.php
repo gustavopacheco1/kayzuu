@@ -7,7 +7,7 @@
     <div class="card mx-auto mt-5 p-4 col-sm-8">
         <h1>Search player</h1>
         <hr>
-        <form action="{{ url('player/search') }}" method="GET">
+        <form action="{{ route('player.find') }}" method="GET">
             <div class="row">
                 <div class="col-sm-10">
                     <input type="text" name="name" class="form-control rounded-0" placeholder="PLAYER NAME" required>

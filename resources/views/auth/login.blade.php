@@ -7,7 +7,7 @@
     <div class="card mx-auto mt-5 p-4 col-8">
         <h1>Login</h1>
         <hr>
-        <form action="login/handle" method="POST">
+        <form action="{{ route('auth.login.post') }}" method="POST">
             @csrf
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="name">Account name</label>

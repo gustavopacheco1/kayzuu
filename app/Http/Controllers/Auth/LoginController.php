@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function index()
+    public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    public function handle(Request $request): RedirectResponse
+    public function login(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
             'name' => ['required'],

@@ -20,7 +20,19 @@ class PlayerController extends Controller
         ]);
     }
 
-    public function create(Request $request): RedirectResponse
+    public function index(int $id)
+    {
+        $player = Player::where('id', $id)->first();
+
+        return view('player.index', $player);
+    }
+
+    public function create()
+    {
+        return view('player.create');
+    }
+
+    public function store(Request $request): RedirectResponse
     {
         $this->validator($request->all())->validate();
 
@@ -34,7 +46,12 @@ class PlayerController extends Controller
         return redirect($this->redirectTo);
     }
 
-    public function search(Request $request): RedirectResponse
+    public function search()
+    {
+        return view('player.search');
+    }
+
+    public function find(Request $request): RedirectResponse
     {
         $player = Player::where('name', $request['name'])->first();
 
@@ -45,12 +62,5 @@ class PlayerController extends Controller
         }
 
         return redirect("player/{$player->id}");
-    }
-
-    public function player(int $id)
-    {
-        $player = Player::where('id', $id)->first();
-
-        return view('player', $player);
     }
 }
