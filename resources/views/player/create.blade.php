@@ -32,7 +32,11 @@
                 <div class="col-sm-6 mx-auto">
                     <select name="vocation" id="vocation" class="form-select rounded-0" required>
                         <option selected disabled>SELECT VOCATION</option>
-                        <option value="1">Knight</option>
+                        @foreach ($vocations as $id => $vocation)
+                            @if ($vocation['createable'])
+                                <option value="{{ $id }}">{{ $vocation['name'] }}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
             </div>

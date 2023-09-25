@@ -22,7 +22,7 @@
                     <tr>
                         <th scope="row">{{ $loop->index + 1 }}</th>
                         <td>{{ $player->name }}</td>
-                        <td><span class="fw-bold text-primary">{{ $player->vocation }}</span></td>
+                        <td><span class="fw-bold text-primary">{{ $player->vocation_name }}</span></td>
                         <td>{{ $player->level }}</td>
                     </tr>
                 @endforeach

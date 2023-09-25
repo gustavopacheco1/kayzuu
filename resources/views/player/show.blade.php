@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="card mx-auto mt-5 p-4 col-sm-8">
-        <h1>{{ $player->name }} <span class="fw-bold text-primary">({{ $player->vocation }})</span></h1>
+        <h1>{{ $player->name }} <span class="fw-bold text-primary">({{ $player->vocation_name }})</span></h1>
         <hr>
         <div class="row">
             <div class="col-sm-4">

@@ -27,7 +27,7 @@
                         <div class="card-body">
                             <h5 class="card-title">
                                 {{ $character->name }}
-                                <span class="text-primary fw-bold">({{ $character->vocation }})</span>
+                                <span class="text-primary fw-bold">({{ $character->vocation_name }})</span>
                             </h5>
                             <p class="card-text">
                                 Level: <span class="text-primary fw-bold">{{ $character->level }}</span>

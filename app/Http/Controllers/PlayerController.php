@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,23 @@ class PlayerController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'unique:players', 'string', 'max:32'],
-            'vocation' => ['required', 'int', 'max:255'],
+            'name' => [
+                'required',
+                'unique:players',
+                'string',
+                'max:32',
+            ],
+            'vocation' => [
+                'required',
+                'int',
+                'max:255',
+                function (string $attribute, mixed $value, Closure $fail) {
+                    $vocation = config('tibia.vocations')[$value];
+                    if (!isset($vocation) || !$vocation['createable']) {
+                        $fail("The {$attribute} is invalid.");
+                    }
+                }
+            ],
         ]);
     }
 
@@ -29,7 +45,9 @@ class PlayerController extends Controller
 
     public function create()
     {
-        return view('player.create');
+        $vocations = config('tibia.vocations');
+
+        return view('player.create', ['vocations' => $vocations]);
     }
 
     public function store(Request $request): RedirectResponse

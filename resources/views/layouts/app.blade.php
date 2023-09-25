@@ -30,7 +30,7 @@
                         <ul class="dropdown-menu rounded-0">
                             <li><a class="dropdown-item" href="{{ route('player.search') }}">Search player</a></li>
                             <li><a class="dropdown-item" href="{{ url('guilds') }}">Guilds</a></li>
-                            <li><a class="dropdown-item" href="{{ route('community.online') }}">Players online</a></li>
+                            <li><a class="dropdown-item" href="{{ route('community.online') }}">Players Online</a></li>
                         </ul>
                     </div>
                 </li>
