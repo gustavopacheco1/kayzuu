@@ -21,7 +21,7 @@
                     @foreach ($players->all() as $player)
                         <tr>
                             <td><a href="{{ url("player/$player->id") }}">{{ $player->name }}</a></td>
-                            <td><span class="fw-bold text-primary">{{ $player->vocation }}</span></td>
+                            <td><span class="fw-bold text-primary">{{ $player->vocation_name }}</span></td>
                             <td>{{ $player->level }}</td>
                         </tr>
                     @endforeach
