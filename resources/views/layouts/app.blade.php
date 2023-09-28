@@ -19,7 +19,7 @@
             <a class="navbar-brand" href="{{ route('home') }}">Kayzuu</a>
             <ul class="nav nav-underline">
                 <li class="nav-item">
-                    <a href="{{ url('download') }}" class="nav-link">DOWNLOAD</a>
+                    <a href="{{ route('download.index') }}" class="nav-link">DOWNLOAD</a>
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">

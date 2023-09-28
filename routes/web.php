@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,10 @@ Route::name('auth.')->group(function () {
 Route::name('community.')->group(function () {
     Route::get('highscore', [CommunityController::class, 'highscore'])->name('highscore');
     Route::get('players/online', [CommunityController::class, 'online'])->name('online');
+});
+
+Route::prefix('download')->name('download.')->group(function () {
+    Route::get('/', [DownloadController::class, 'index'])->name('index');
 });
 
 Route::prefix('account')->name('account.')->middleware('auth')->group(function () {
