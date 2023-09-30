@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Search player')
+
 @section('content_header')
 @endsection
 

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Create Character')
+
 @section('content_header')
 @endsection
 
@@ -19,7 +21,7 @@
             </li>
         </ul>
         <hr>
-        <h2 class="mb-3 mx-auto">Create character</h2>
+        <h2 class="mb-3 mx-auto">Create Character</h2>
         @include('layouts.errors')
         <form action="{{ route('player.store') }}" method="POST">
             @csrf

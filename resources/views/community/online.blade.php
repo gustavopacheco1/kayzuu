@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Players Online')
+
 @section('content_header')
 @endsection
 

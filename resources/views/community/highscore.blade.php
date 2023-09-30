@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Highscore')
+
 @section('content_header')
 @endsection
 

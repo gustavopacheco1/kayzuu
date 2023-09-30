@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "gustavopacheco1/kayzuu",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "Kayzuu is a web application for Open Tibia Servers.",
+    "keywords": ["laravel", "framework", "tibia", "open tibia"],
     "license": "MIT",
     "require": {
         "php": "^8.1",

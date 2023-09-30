@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Account Characters')
+
 @section('content_header')
 @endsection
 
