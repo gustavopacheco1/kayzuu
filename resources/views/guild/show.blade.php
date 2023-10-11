@@ -14,7 +14,7 @@
                 <h2>Actions</h2>
                 <div class="col-sm-2">
                     <a class="btn btn-primary d-inline-block rounded-0"
-                        href="{{ route('guild.invite', ['id' => $guild->id]) }}">Invite player</a>
+                        href="{{ route('guild.invite', [$guild->id]) }}">Invite player</a>
                 </div>
             </div>
             <hr>
@@ -51,7 +51,7 @@
                         </td>
                         @if ($isOwner)
                             <td>
-                                <form method="POST" action="{{ route('guild.kick', ['playerId' => $member->id]) }}">
+                                <form method="POST" action="{{ route('guild.kick', ['guild' => $guild->id, 'player' => $member->id]) }}">
                                     @csrf
                                     {{ method_field('DELETE') }}
                                     <button class="btn btn-sm btn-danger mx-1" type="submit">Kick</button>
@@ -95,13 +95,13 @@
                                     <div class="d-flex justify-content-center">
                                         @if ($isCharacterOwner)
                                             <form method="POST"
-                                                action="{{ route('guild.invite.accept', ['id' => $guild->id, 'playerId' => $invite->player->id]) }}">
+                                                action="{{ route('guild.invite.accept', ['guild' => $guild->id, 'player' => $invite->player->id]) }}">
                                                 @csrf
                                                 <button class="btn btn-sm btn-success mx-1" type="submit">Accept</button>
                                             </form>
                                         @endif
                                         <form method="POST"
-                                            action="{{ route('guild.invite.cancel', ['id' => $guild->id, 'playerId' => $invite->player->id]) }}">
+                                            action="{{ route('guild.invite.cancel', ['guild' => $guild->id, 'player' => $invite->player->id]) }}">
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <button class="btn btn-sm btn-danger mx-1" type="submit">Cancel</button>

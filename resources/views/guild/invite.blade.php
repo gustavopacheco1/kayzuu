@@ -8,12 +8,12 @@
 @section('content')
     <div class="card mx-auto mt-5 p-4 col-sm-8">
         <span>
-            <a href="{{ route('guild.show', ['id' => $guild->id]) }}"><- Back</a>
+            <a href="{{ route('guild.show', [$guild->id]) }}"><- Back</a>
         </span>
         <h1>{{ $guild->name }} - Invite</h1>
         <hr>
         @include('layouts.errors')
-        <form action="{{ route('guild.invite.post', ['id' => $guild->id]) }}" method="POST">
+        <form action="{{ route('guild.invite.post', [$guild->id]) }}" method="POST">
             @csrf
             <div class="col-sm-6 mx-auto">
                 <div class="row mb-3">

@@ -54,4 +54,11 @@ class Guild extends Model
     {
         return $this->ranks->sortByDesc('level')->first();
     }
+
+    public function hasInvite(int $playerId): bool
+    {
+        return GuildInvite::where('guild_id', $this->id)
+            ->where('player_id', $playerId)
+            ->exists();
+    }
 }

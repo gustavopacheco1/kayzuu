@@ -23,15 +23,13 @@ class Account extends Authenticatable
         return $this->hasMany(Player::class);
     }
 
-    public function hasCharacter(int $playerId): bool
+    public function hasCharacter(Player|int $player): bool
     {
-        return $this->characters->contains($playerId);
+        return $this->characters->contains($player);
     }
 
-    public function hasGuildOwner(int $guildId): bool
+    public function hasGuildOwner(Guild $guild): bool
     {
-        $guild = Guild::find($guildId);
-
         return $this->characters->contains($guild->ownerid);
     }
 }

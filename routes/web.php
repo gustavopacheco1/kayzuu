@@ -49,15 +49,15 @@ Route::name('guild.')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::get('guild/create', [GuildController::class, 'create'])->name('create');
         Route::post('guild/store', [GuildController::class, 'store'])->name('store');
-        Route::delete('guild/kick/{playerId}', [GuildController::class, 'kick'])->name('kick');
-        Route::prefix('guild/{id}')->group(function () {
+        Route::prefix('guild/{guild}')->group(function () {
             Route::get('invite', [GuildController::class, 'showInviteForm'])->name('invite');
             Route::post('invite', [GuildController::class, 'invite'])->name('invite.post');
-            Route::post('invite/accept/{playerId}', [GuildController::class, 'acceptInvite'])->name('invite.accept');
-            Route::delete('invite/cancel/{playerId}', [GuildController::class, 'cancelInvite'])->name('invite.cancel');
+            Route::post('invite/accept/{player}', [GuildController::class, 'acceptInvite'])->name('invite.accept');
+            Route::delete('invite/cancel/{player}', [GuildController::class, 'cancelInvite'])->name('invite.cancel');
+            Route::delete('kick/{player}', [GuildController::class, 'kick'])->name('kick');
         });
     });
-    Route::get('guild/{id}', [GuildController::class, 'show'])->name('show');
+    Route::get('guild/{guild}', [GuildController::class, 'show'])->name('show');
 });
 
 Route::prefix('download')->name('download.')->group(function () {
