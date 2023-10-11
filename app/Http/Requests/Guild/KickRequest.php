@@ -11,7 +11,7 @@ class KickRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->can('kick', $this->guild, $this->player);
+        return $this->user()->can('kick', [$this->guild, $this->player]);
     }
 
     /**

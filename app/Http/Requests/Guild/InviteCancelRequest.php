@@ -11,7 +11,7 @@ class InviteCancelRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->can('cancelInvite', $this->guild, $this->player);
+        return $this->user()->can('cancelInvite', [$this->guild, $this->player]);
     }
 
     /**

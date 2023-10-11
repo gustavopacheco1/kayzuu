@@ -30,7 +30,7 @@
                 @foreach ($guilds as $guild)
                     <tr>
                         <th scope="row">{{ $loop->index + 1 }}</th>
-                        <td><a href="{{ route('guild.show', ['id' => $guild->id]) }}">{{ $guild->name }}</a></td>
+                        <td><a href="{{ route('guild.show', ['guild' => $guild->id]) }}">{{ $guild->name }}</a></td>
                     </tr>
                 @endforeach
             </tbody>

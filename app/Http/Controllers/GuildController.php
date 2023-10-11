@@ -25,7 +25,7 @@ class GuildController extends Controller
         return view('guild.index', ['guilds' => $guilds]);
     }
 
-    public function show(Guild $guild)
+    public function show(Guild $guild): View
     {
         $guild = $guild->with([
             'memberships' => [
@@ -117,7 +117,7 @@ class GuildController extends Controller
         return back();
     }
 
-    public function kick(KickRequest $request, Player $player)
+    public function kick(KickRequest $request, Guild $guild, Player $player): RedirectResponse
     {
         $player->membership()->delete();
 
