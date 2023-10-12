@@ -39,7 +39,7 @@
                 @foreach ($guild->members as $member)
                     <tr>
                         <th scope="row">{{ $member->membership->rank->name }}</th>
-                        <td><a href="{{ route('player.show', ['id' => $member->id]) }}">{{ $member->name }}</a></td>
+                        <td><a href="{{ route('player.show', [$member->id]) }}">{{ $member->name }}</a></td>
                         <td><span class="text-primary fw-bold">{{ $member->vocation_name }}</span></td>
                         <td>{{ $member->level }}</td>
                         <td>
@@ -86,7 +86,7 @@
                         <tr>
                             <th scope="row">{{ $loop->index + 1 }}</th>
                             <td><a
-                                    href="{{ route('player.show', ['id' => $invite->player->id]) }}">{{ $invite->player->name }}</a>
+                                    href="{{ route('player.show', [$invite->player->id]) }}">{{ $invite->player->name }}</a>
                             </td>
                             <td>{{ $invite->player->level }}</td>
                             <td><span class="fw-bold text-primary">{{ $invite->player->vocation_name }}</span></td>

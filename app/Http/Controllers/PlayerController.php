@@ -2,83 +2,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Player\StoreRequest;
 use App\Models\Player;
-use Closure;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class PlayerController extends Controller
 {
-    protected $redirectTo = '/account/characters';
-
-    protected function validator(array $data)
+    public function show(Player $player): View
     {
-        return Validator::make($data, [
-            'name' => [
-                'required',
-                'unique:players',
-                'string',
-                'max:32',
-            ],
-            'vocation' => [
-                'required',
-                'int',
-                'max:255',
-                function (string $attribute, mixed $value, Closure $fail) {
-                    $vocation = config('tibia.vocations')[$value];
-                    if (!isset($vocation) || !$vocation['createable']) {
-                        $fail("The {$attribute} is invalid.");
-                    }
-                }
-            ],
-        ]);
-    }
-
-    public function show(int $id)
-    {
-        $player = Player::where('id', $id)->first();
-
         return view('player.show', ['player' => $player]);
     }
 
-    public function create()
+    public function create(): View
     {
         $vocations = config('tibia.vocations');
 
         return view('player.create', ['vocations' => $vocations]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreRequest $request): RedirectResponse
     {
-        $this->validator($request->all())->validate();
-
         Player::create([
-            'account_id' => Auth::id(),
+            'account_id' => $request->user()->id,
             'name' => $request->name,
             'vocation' => $request->vocation,
             'sex' => 1,
         ]);
 
-        return redirect($this->redirectTo);
+        return redirect()->route('account.characters');
     }
 
-    public function search()
+    public function search(): View
     {
         return view('player.search');
     }
 
     public function find(Request $request): RedirectResponse
     {
-        $player = Player::where('name', $request['name'])->first();
+        $player = Player::where('name', $request->input('name'))->first();
 
         if (!$player) {
             return back()->withErrors([
-                'name' => "There's no player with name {$request['name']}.",
+                'message' => "There's no player with name {$request->input('name')}.",
             ])->onlyInput('name');
         }
 
-        return redirect("player/{$player->id}");
+        return redirect()->route('player.show', [$player->id]);
     }
 }

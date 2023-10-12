@@ -76,5 +76,5 @@ Route::prefix('player')->name('player.')->group(function () {
         Route::get('create', [PlayerController::class, 'create'])->name('create');
         Route::post('store', [PlayerController::class, 'store'])->name('store');
     });
-    Route::get('{id}', [PlayerController::class, 'show'])->name('show');
+    Route::get('{player}', [PlayerController::class, 'show'])->name('show');
 });
