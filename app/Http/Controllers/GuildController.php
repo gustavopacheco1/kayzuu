@@ -12,7 +12,7 @@ use Illuminate\Http\RedirectResponse;
 
 class GuildController extends Controller
 {
-    public function __construct(private GuildRepository $repository, private GuildService $service)
+    public function __construct(private GuildRepository $guildRepository, private GuildService $guildService)
     {
     }
 
@@ -25,7 +25,7 @@ class GuildController extends Controller
 
     public function show(Guild $guild): View
     {
-        $guild = $this->repository->getGuildDetails($guild);
+        $guild = $this->guildRepository->getGuildDetails($guild);
 
         /** @var Account $account */
         $account = auth()->user();
@@ -48,7 +48,7 @@ class GuildController extends Controller
 
     public function store(StoreRequest $request): RedirectResponse
     {
-        $guild = $this->service->createGuild($request->validated());
+        $guild = $this->guildService->createGuild($request->validated());
 
         return redirect()->route('guild.show', [$guild->id]);
     }
