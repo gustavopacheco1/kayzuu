@@ -24,15 +24,15 @@
         <h2>Account Information</h2>
         <div class="row mb-3">
             <span class="col-sm-2 fw-bold">Account ID</span>
-            <span class="col-sm-10">{{ $id }}</span>
+            <span class="col-sm-10">{{ $account->id }}</span>
         </div>
         <div class="row mb-3">
             <span class="col-sm-2 fw-bold">Email</span>
-            <span class="col-sm-10">{{ $email }}</span>
+            <span class="col-sm-10">{{ $account->email }}</span>
         </div>
         <div class="row mb-3">
             <span class="col-sm-2 fw-bold">Member since</span>
-            <span class="col-sm-10">{{ $created_at }}</span>
+            <span class="col-sm-10">{{ date('d/m/Y', strtotime($account->creation)) }}</span>
         </div>
         <div class="row mb-3">
             {{-- TODO: add support to this sonner --}}
