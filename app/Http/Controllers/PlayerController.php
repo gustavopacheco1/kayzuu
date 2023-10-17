@@ -53,14 +53,14 @@ class PlayerController extends Controller
         return redirect()->route('player.show', [$player->id]);
     }
 
-    public function highscore()
+    public function highscore(): View
     {
         $players = $this->playerRepository->getHighscorePlayers();
 
         return view('player.highscore', compact('players'));
     }
 
-    public function online()
+    public function online(): View
     {
         $players = $this->playerRepository->getPlayersOnline();
 
