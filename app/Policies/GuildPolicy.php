@@ -10,6 +10,14 @@ use Illuminate\Auth\Access\Response;
 class GuildPolicy
 {
     /**
+     * Determine if the user owns the given guild.
+     */
+    public function own(Account $account, Guild $guild): bool
+    {
+        return $account->hasGuildOwner($guild);
+    }
+
+    /**
      * Determine if the user can invite the given player.
      */
     public function invite(Account $account, Guild $guild, ?Player $player): Response
@@ -41,6 +49,9 @@ class GuildPolicy
         return $account->hasCharacter($player) && $guild->hasInvite($player->id);
     }
 
+    /**
+     * Determine if the user can cancel the invite.
+     */
     public function cancelInvite(Account $account, Guild $guild, Player $player): bool
     {
         return $guild->hasInvite($player->id) && ($account->hasGuildOwner($guild) || $account->hasCharacter($player));

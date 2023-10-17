@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GuildController;
+use App\Http\Controllers\GuildInviteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
@@ -50,11 +51,11 @@ Route::name('guild.')->group(function () {
         Route::get('guild/create', [GuildController::class, 'create'])->name('create');
         Route::post('guild/store', [GuildController::class, 'store'])->name('store');
         Route::prefix('guild/{guild}')->group(function () {
-            Route::get('invite', [GuildController::class, 'showInviteForm'])->name('invite');
-            Route::post('invite', [GuildController::class, 'invite'])->name('invite.post');
-            Route::post('invite/accept/{player}', [GuildController::class, 'acceptInvite'])->name('invite.accept');
-            Route::delete('invite/cancel/{player}', [GuildController::class, 'cancelInvite'])->name('invite.cancel');
-            Route::delete('kick/{player}', [GuildController::class, 'kick'])->name('kick');
+            Route::get('invite', [GuildInviteController::class, 'showInviteForm'])->name('invite');
+            Route::post('invite', [GuildInviteController::class, 'invite'])->name('invite.post');
+            Route::post('invite/accept/{player}', [GuildInviteController::class, 'accept'])->name('invite.accept');
+            Route::delete('invite/cancel/{player}', [GuildInviteController::class, 'cancel'])->name('invite.cancel');
+            Route::delete('kick/{player}', [GuildInviteController::class, 'kick'])->name('kick');
         });
     });
     Route::get('guild/{guild}', [GuildController::class, 'show'])->name('show');
