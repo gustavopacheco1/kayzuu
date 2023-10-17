@@ -4,7 +4,6 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GuildController;
 use App\Http\Controllers\GuildInviteController;
@@ -40,11 +39,6 @@ Route::name('auth.')->group(function () {
     });
 });
 
-Route::name('community.')->group(function () {
-    Route::get('highscore', [CommunityController::class, 'highscore'])->name('highscore');
-    Route::get('players/online', [CommunityController::class, 'online'])->name('online');
-});
-
 Route::name('guild.')->group(function () {
     Route::get('guilds', [GuildController::class, 'index'])->name('index');
     Route::middleware('auth')->group(function () {
@@ -70,12 +64,16 @@ Route::prefix('account')->name('account.')->middleware('auth')->group(function (
     Route::get('characters', [AccountController::class, 'characters'])->name('characters');
 });
 
-Route::prefix('player')->name('player.')->group(function () {
-    Route::get('search', [PlayerController::class, 'search'])->name('search');
-    Route::get('find', [PlayerController::class, 'find'])->name('find');
-    Route::middleware('auth')->group(function () {
-        Route::get('create', [PlayerController::class, 'create'])->name('create');
-        Route::post('store', [PlayerController::class, 'store'])->name('store');
+Route::name('player.')->group(function () {
+    Route::get('highscore', [PlayerController::class, 'highscore'])->name('highscore');
+    Route::get('online', [PlayerController::class, 'online'])->name('online');
+    Route::prefix('player')->group(function () {
+        Route::get('search', [PlayerController::class, 'search'])->name('search');
+        Route::get('find', [PlayerController::class, 'find'])->name('find');
+        Route::middleware('auth')->group(function () {
+            Route::get('create', [PlayerController::class, 'create'])->name('create');
+            Route::post('store', [PlayerController::class, 'store'])->name('store');
+        });
+        Route::get('{player}', [PlayerController::class, 'show'])->name('show');
     });
-    Route::get('{player}', [PlayerController::class, 'show'])->name('show');
 });

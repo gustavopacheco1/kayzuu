@@ -4,32 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Player\StoreRequest;
 use App\Models\Player;
+use App\Repositories\PlayerRepository;
+use App\Services\PlayerService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
+    public function __construct(private PlayerRepository $playerRepository, private PlayerService $playerService)
+    {
+    }
+
     public function show(Player $player): View
     {
-        return view('player.show', ['player' => $player]);
+        return view('player.show', compact('player'));
     }
 
     public function create(): View
     {
         $vocations = config('tibia.vocations');
 
-        return view('player.create', ['vocations' => $vocations]);
+        return view('player.create', compact('vocations'));
     }
 
     public function store(StoreRequest $request): RedirectResponse
     {
-        Player::create([
-            'account_id' => $request->user()->id,
-            'name' => $request->name,
-            'vocation' => $request->vocation,
-            'sex' => 1,
-        ]);
+        $this->playerService->createPlayer($request->validated);
 
         return redirect()->route('account.characters');
     }
@@ -45,10 +46,24 @@ class PlayerController extends Controller
 
         if (!$player) {
             return back()->withErrors([
-                'message' => "There's no player with name {$request->input('name')}.",
+                'message' => "There is no player with name {$request->input('name')}.",
             ])->onlyInput('name');
         }
 
         return redirect()->route('player.show', [$player->id]);
+    }
+
+    public function highscore()
+    {
+        $players = $this->playerRepository->getHighscorePlayers();
+
+        return view('player.highscore', compact('players'));
+    }
+
+    public function online()
+    {
+        $players = $this->playerRepository->getPlayersOnline();
+
+        return view('player.online', compact('players'));
     }
 }

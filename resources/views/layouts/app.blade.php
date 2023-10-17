@@ -31,12 +31,12 @@
                         <ul class="dropdown-menu rounded-0">
                             <li><a class="dropdown-item" href="{{ route('player.search') }}">Search player</a></li>
                             <li><a class="dropdown-item" href="{{ url('guilds') }}">Guilds</a></li>
-                            <li><a class="dropdown-item" href="{{ route('community.online') }}">Players Online</a></li>
+                            <li><a class="dropdown-item" href="{{ route('player.online') }}">Players Online</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('community.highscore') }}" class="nav-link">HIGHSCORE</a>
+                    <a href="{{ route('player.highscore') }}" class="nav-link">HIGHSCORE</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('store') }}" class="nav-link">STORE</a>
