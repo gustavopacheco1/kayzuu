@@ -11,39 +11,62 @@
         <hr>
         <ul class="nav nav-underline">
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == 0) active @endif"
-                    href="{{ route('player.highscore') }}">Level</a>
+                <a @class(['nav-link', 'active' => $skillType == 0]) href="{{ route('player.highscore') }}">Level</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::MAGLEVEL->value) active @endif"
+                <a @class([
+                    'nav-link',
+                    'active' => $skillType == \App\Enums\SkillTypeEnum::MAGLEVEL->value,
+                ])
                     href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::MAGLEVEL->value) }}">Magic Level</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::FIST->value) active @endif"
+                <a @class([
+                    'nav-link',
+                    'active' => $skillType == \App\Enums\SkillTypeEnum::FIST->value,
+                ])
                     href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::FIST->value) }}">Fist</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::CLUB->value) active @endif"
+                <a @class([
+                    'nav-link',
+                    'active' => $skillType == \App\Enums\SkillTypeEnum::CLUB->value,
+                ])
                     href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::CLUB->value) }}">Club</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::SWORD->value) active @endif"
+                <a @class([
+                    'nav-link',
+                    'active' => $skillType == \App\Enums\SkillTypeEnum::SWORD->value,
+                ])
                     href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::SWORD->value) }}">Sword</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::AXE->value) active @endif"
+                <a @class([
+                    'nav-link',
+                    'active' => $skillType == \App\Enums\SkillTypeEnum::AXE->value,
+                ])
                     href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::AXE->value) }}">Axe</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::DIST->value) active @endif"
+                <a @class([
+                    'nav-link',
+                    'active' => $skillType == \App\Enums\SkillTypeEnum::DIST->value,
+                ])
                     href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::DIST->value) }}">Distance</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::SHIELDING->value) active @endif"
+                <a @class([
+                    'nav-link',
+                    'active' => $skillType == \App\Enums\SkillTypeEnum::SHIELDING->value,
+                ])
                     href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::SHIELDING->value) }}">Shielding</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::FISHING->value) active @endif"
+                <a @class([
+                    'nav-link',
+                    'active' => $skillType == \App\Enums\SkillTypeEnum::FISHING->value,
+                ])
                     href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::FISHING->value) }}">Fishing</a>
             </li>
         </ul>
