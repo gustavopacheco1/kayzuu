@@ -53,7 +53,7 @@ class PlayerController extends Controller
         return redirect()->route('player.show', [$player->id]);
     }
 
-    public function highscore(int $skillType = 0)
+    public function highscore(int $skillType = 0): View
     {
         $players = $this->playerRepository->getHighscorePlayers($skillType);
 
