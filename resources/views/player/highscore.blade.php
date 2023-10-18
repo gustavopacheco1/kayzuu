@@ -9,8 +9,46 @@
     <div class="card mx-auto mt-5 p-4 col-sm-8">
         <h1>Highscore</h1>
         <hr>
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == 0) active @endif"
+                    href="{{ route('player.highscore') }}">Level</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::MAGLEVEL->value) active @endif"
+                    href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::MAGLEVEL->value) }}">Magic Level</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::FIST->value) active @endif"
+                    href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::FIST->value) }}">Fist</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::CLUB->value) active @endif"
+                    href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::CLUB->value) }}">Club</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::SWORD->value) active @endif"
+                    href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::SWORD->value) }}">Sword</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::AXE->value) active @endif"
+                    href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::AXE->value) }}">Axe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::DIST->value) active @endif"
+                    href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::DIST->value) }}">Distance</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::SHIELDING->value) active @endif"
+                    href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::SHIELDING->value) }}">Shielding</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @if ($skillType == \App\Enums\SkillTypeEnum::FISHING->value) active @endif"
+                    href="{{ route('player.highscore', \App\Enums\SkillTypeEnum::FISHING->value) }}">Fishing</a>
+            </li>
+        </ul>
+        <hr>
         <table class="table caption-top text-center">
-            <caption>List of top level players</caption>
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -25,7 +63,7 @@
                         <th scope="row">{{ $loop->index + 1 }}</th>
                         <td>{{ $player->name }}</td>
                         <td><span class="fw-bold text-primary">{{ $player->vocation_name }}</span></td>
-                        <td>{{ $player->level }}</td>
+                        <td>{{ $player->skill }}</td>
                     </tr>
                 @endforeach
             </tbody>

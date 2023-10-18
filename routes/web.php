@@ -65,7 +65,7 @@ Route::prefix('account')->name('account.')->middleware('auth')->group(function (
 });
 
 Route::name('player.')->group(function () {
-    Route::get('highscore', [PlayerController::class, 'highscore'])->name('highscore');
+    Route::get('highscore/{skillType?}', [PlayerController::class, 'highscore'])->name('highscore');
     Route::get('online', [PlayerController::class, 'online'])->name('online');
     Route::prefix('player')->group(function () {
         Route::get('search', [PlayerController::class, 'search'])->name('search');
