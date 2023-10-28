@@ -20,7 +20,10 @@
             <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }}</a>
             <ul class="nav nav-underline">
                 <li class="nav-item">
-                    <a href="{{ route('download.index') }}" class="nav-link">DOWNLOAD</a>
+                    <a href="{{ route('home') }}" class="nav-link">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('news.index') }}" class="nav-link">NEWS</a>
                 </li>
                 <li class="nav-item">
                     <div class="dropdown">
@@ -28,18 +31,18 @@
                             aria-expanded="false">
                             COMMUNITY
                         </a>
-                        <ul class="dropdown-menu rounded-0">
-                            <li><a class="dropdown-item" href="{{ route('player.search') }}">Search player</a></li>
-                            <li><a class="dropdown-item" href="{{ url('guilds') }}">Guilds</a></li>
-                            <li><a class="dropdown-item" href="{{ route('player.online') }}">Players Online</a></li>
+                        <ul class="dropdown-menu rounded-0" style="font-size: 13px">
+                            <li><a class="dropdown-item" href="{{ route('player.search') }}">SEARCH PLAYER</a></li>
+                            <li><a class="dropdown-item" href="{{ url('guilds') }}">GUILDS</a></li>
+                            <li><a class="dropdown-item" href="{{ route('player.online') }}">PLAYERS ONLINE</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('player.highscore') }}">HIGHSCORE</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('player.highscore') }}" class="nav-link">HIGHSCORE</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('store') }}" class="nav-link">STORE</a>
+                    <a href="{{ route('download.index') }}" class="nav-link">DOWNLOAD</a>
                 </li>
             </ul>
             <ul class="nav nav-underline justify-content-end">
